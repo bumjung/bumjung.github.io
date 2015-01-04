@@ -1,1 +1,149 @@
-hello world
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Bumjung Kim</title>
+        <meta name="description" Description="Personal Website!">
+        <meta name="author" Description="Bumjung Kim">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js" type="text/javascript"></script>
+        <script>
+            $(document).ready(function(){
+                
+                $('.contact-list li').mouseover(function() {
+                    
+                    $(this).children().children().attr('src', "pics/img_"+ this.id +"-hover.png");
+                    $(this).children().css("color","rgb(55, 153, 223)");
+                });
+                
+                $('.contact-list li').mouseout(function() {
+                    $(this).children().children().attr('src', "pics/img_"+ this.id +".png");
+                    $(this).children().css("color","#585858");
+                });
+                
+                $("#navbar a").click(function(){
+                    
+                    var oldPage = $("#navbar .current"); //get the element of current page
+                    newPage =$(this).attr("class"); //get the element of new page
+                    
+                    if(newPage == ""){ //replace current class
+                        newPage=$(this).toggleClass('current');
+                        oldPage=$(oldPage).removeClass('current');
+                    
+                        var oldID = oldPage.attr("id").substring(4);
+                        var newID = $(this).attr("id").substring(4);
+                        
+                        var oldCntnt=$("#content " + "#" + oldID);
+                        var newCntnt=$("#content " + "#" + newID);
+                        
+                            $(oldCntnt).fadeOut(450, function() {
+                                oldCntnt=$(oldCntnt).toggleClass('invisible');
+                                $(newCntnt).fadeIn(450, function() {
+                                    newCntnt=$(newCntnt).toggleClass('invisible');
+                                });
+                          });
+                    }
+                });
+            });
+            
+        </script>
+    </head>
+    <body>
+        <div id="page">
+            <div id="links">
+                <nav id="navbar">
+                    <ul>
+                        <li>
+                            <a href="#" id="nav-home" class="current">about</a>
+                        </li>
+                        <li class="break">
+                            /
+                        </li>
+                        <li>
+                            <a href="#resume" id="nav-resume">resume</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <div id="header">
+                <div class="content-left">
+                    <h1>BUMJUNG KIM</h1>
+                    <h2>WATERLOO SOFTWARE ENGINEERING '17</h2>
+                </div>
+                <div class="content-right">
+                    <ul class="contact-list">
+                        <li id="mail"><a href="mailto:bumj94@gmail.com"><img src="pics/img_mail.png"/>bumj94@gmail.com</a></li>
+                        <li id="github"><a target="_blank" href="https://github.com/bumjung94"><img src="pics/img_github.png" class="img-resize"/>github.com/bumjung94</a></li>
+                        <li id="linkedin"><a href="#"><img src="pics/img_linkedin.png" /> - </a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div id="content">
+                <div id="home" class="visible">
+                    <div class="content-box content-left about">
+                        <h2>ABOUT ME</h2>
+                        <p>I am currently attending University of Waterloo and majoring in Software Engineering Co-op (currently in my second year).</p>
+                        <p>Software engineering is a systematic and disciplined approach to developing software. It applies both computer science and engineering principles and practices to the creation, process, and maintenance of software systems.<!--I love to come up with an idea, put it into action, and watch it come to life - which is why I love programming!--></p>
+                        <p>This website is designed to showcase me, as a person, student and as a professional. You are always welcome to contact me using the contact information as provided.</p>
+                    </div>
+                    <div class="content-box content-right">
+                        <h2>PROGRAMMING LANGUAGES</h2>
+                        <ul class="content-left lang">
+                        <li>JAVA</li>
+                        <li>C++</li>
+                        <li>C</li>
+                        <li>VHDL</li>
+                        </ul>
+                        <ul class="content-right lang">
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JAVASCRIPT</li>
+                        <li>JQUERY</li>
+                        <li>COLDFUSION</li>
+                        </ul>
+                    </div>
+                    <div class="content-box content-left">
+                        <h2>EMPLOYMENT</h2>
+                        <h3>MAY 2013 - SEPT 2013</h3>
+                        <h4>Web Application Developer</h4>
+                        <h5>Public Works and Government Services (PWGSC)</h5>
+                        <ul class="emply">
+                            <li>Developed web applications and web sites in Intranet and Internet sites using HTML, CSS, Javascript and Coldfusion.</li>
+                            <li>Responsible for developing web pages compatible with all standard web browsers while ensuring W3C accessibility compliance.</li>
+                            <li>Enhanced Dreamweaver regex algorithm using Javascript to find and replace abbreviations with appropriate 'abbr' tags.</li>
+                        </ul>
+                    </div>
+                    <div class="content-box content-right">
+                        <h2>EDUCATION</h2>
+                        <h3>2013 &ndash; PRESENT</h3>
+                        <h4>Software Engineering</h4>
+                        <p>Bachelor of Software Engineering (BSE)</p> 
+                        <p>Faculty Of Engineering and Faculty Of Mathematics<br/>
+                        University Of Waterloo, Canada</p>
+                    </div>
+                </div>
+                
+                <div id="resume" class="invisible">
+                    <div class="content-full-box">
+                    <h2>RESUME</h2>
+                        <div class="resume-box">
+                            <iframe src="resume.pdf" width="100%" height="665px" scrolling="yes"></iframe>
+                        </div>
+                    </div>
+                </div>
+                
+                <!---<div id="contact" class="invisible">
+                    <div class="content-full-box content-left">
+                        <h2>CONTACT ME</h2>
+                        <div class="content-left">
+                        </div>
+                    </div>
+                </div>--->
+            </div>
+        </div>
+        
+        
+    </body>
+</html>
